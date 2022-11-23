@@ -16,15 +16,5 @@ for tag in tags:
   except ValueError:
     continue
 
-docker = open('layer/Dockerfile')
-for i, line in enumerate(docker):
-  if i==2:
-    version = line.strip('\n').split(':')[1]
-print(version)
-
-if semver.compare(latest, version) == 1:
-  print('there is a newer version')
-
-
 # sed Dockerfile with new version
-# 
+new = subprocess.Popen(('sed', '-i', '', '-e', "/amazon\\/aws-cli:/s/:.*/:%s/"%(latest), 'layer/Dockerfile'), stdout=subprocess.PIPE)

@@ -20,8 +20,10 @@ jobs:
         run: sudo chown superchain /var/run/docker.sock
       - name: Install dependencies
         run: yarn install --check-files --frozen-lockfile
+      - name: Download Python Deps
+        run: pip install semver
       - name: Check for custom dependency upgrades
-        run: python3 upgrade.py
+        run: python3 .github/scripts/upgrade.py
       - id: create_patch
         name: Find mutations
         run: |-
