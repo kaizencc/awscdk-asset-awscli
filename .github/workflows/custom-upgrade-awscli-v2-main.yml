@@ -22,7 +22,7 @@ jobs:
         run: yarn install --check-files --frozen-lockfile
       - name: Download Python Deps
         run: |
-          sudo apt-get -y install jq
+          sudo apt-get install jq
           which jq
           pip install semver
       - name: Check for custom dependency upgrades
