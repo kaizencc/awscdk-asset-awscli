@@ -1,0 +1,14 @@
+name: test-run
+on:
+  workflow_dispatch: {}
+jobs:
+  upgrade:
+    name: Upgrade
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      patch_created: ${{ steps.create_patch.outputs.patch_created }}
+    steps:
+      - name: Check for custom dependency upgrades
+        run: python3 .github/scripts/upgrade.py
