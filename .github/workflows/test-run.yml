@@ -10,5 +10,9 @@ jobs:
     outputs:
       patch_created: ${{ steps.create_patch.outputs.patch_created }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: awscli-v2/main
       - name: Check for custom dependency upgrades
         run: python3 .github/scripts/upgrade.py
